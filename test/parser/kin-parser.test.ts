@@ -6,9 +6,7 @@ import * as fs from 'fs'
 
 var file = path.join(__dirname, '/../data/1xgoFH-multi.kin')
 var str = fs.readFileSync(file, 'utf-8')
-var blob = new Blob([str], {
-    type: 'text/plain'
-})
+var blob = new Blob([str], { type: 'text/plain' })
 var streamer = new FileStreamer(blob)
 var kinParser = new KinParser(streamer, {})
 
