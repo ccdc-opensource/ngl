@@ -69,8 +69,7 @@ export const plugins = [
   commonjs(),
   glsl(),
   text(),
-  json(),
-  buble({forOf: false})
+  json()
 ]
 
 const moduleConfig = {

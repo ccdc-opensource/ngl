@@ -191,9 +191,9 @@ if (!String.prototype.startsWith) {
     }
     if (defineProperty) {
       defineProperty(String.prototype, 'startsWith', {
-        'value': startsWith,
-        'configurable': true,
-        'writable': true
+        value: startsWith,
+        configurable: true,
+        writable: true
       })
     } else {
       // eslint-disable-next-line no-extend-native
@@ -345,7 +345,7 @@ if (!Array.from) {
       }
 
       // 4. If mapfn is undefined, then let mapping be false.
-      var mapFn = arguments.length > 1 ? arguments[1] : void undefined
+      var mapFn = arguments.length > 1 ? arguments[1] : undefined
       var T
       if (typeof mapFn !== 'undefined') {
         // 5. else
@@ -367,12 +367,12 @@ if (!Array.from) {
       // 13. If IsConstructor(C) is true, then
       // 13. a. Let A be the result of calling the [[Construct]] internal method of C with an argument list containing the single item len.
       // 14. a. Else, Let A be ArrayCreate(len).
-      var A = isCallable(C) ? Object(new C(len)) : new Array(len)
+      const A = isCallable(C) ? Object(new C(len)) : new Array(len)
 
       // 16. Let k be 0.
-      var k = 0
+      let k = 0
       // 17. Repeat, while k < len… (also steps a - h)
-      var kValue
+      let kValue = 0
       while (k < len) {
         kValue = items[k]
         if (mapFn) {
@@ -400,26 +400,26 @@ if (typeof window !== 'undefined') {
     // MIT license
 
     var lastTime = 0
-    var vendors = [ 'ms', 'moz', 'webkit', 'o' ]
+    var vendors = ['ms', 'moz', 'webkit', 'o']
 
     for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
       window.requestAnimationFrame = (
-        window[ vendors[ x ] + 'RequestAnimationFrame' ]
+        window[vendors[x] + 'RequestAnimationFrame']
       )
 
       window.cancelAnimationFrame = (
-        window[ vendors[ x ] + 'CancelAnimationFrame' ] ||
-        window[ vendors[ x ] + 'CancelRequestAnimationFrame' ]
+        window[vendors[x] + 'CancelAnimationFrame'] ||
+        window[vendors[x] + 'CancelRequestAnimationFrame']
       )
     }
 
     if (!window.requestAnimationFrame) {
       window.requestAnimationFrame = function (callback/*, element */) {
-        var currTime = new Date().getTime()
-        var timeToCall = Math.max(0, 16 - (currTime - lastTime))
+        const currTime = new Date().getTime()
+        const timeToCall = Math.max(0, 16 - (currTime - lastTime))
 
-        var id = window.setTimeout(function () {
-          var time = currTime + timeToCall
+        const id = window.setTimeout(function () {
+          const time = currTime + timeToCall
           callback(time)
         }, timeToCall)
 
@@ -445,7 +445,7 @@ if (Function.prototype.name === undefined && Object.defineProperty !== undefined
   Object.defineProperty(Function.prototype, 'name', {
 
     get: function () {
-      return this.toString().match(/^\s*function\s*(\S*)\s*\(/)[ 1 ]
+      return this.toString().match(/^\s*function\s*(\S*)\s*\(/)[1]
     }
 
   })
@@ -459,7 +459,7 @@ if (typeof window !== 'undefined') {
 
   if (window.performance.now === undefined) {
     (function () {
-      var start = Date.now()
+      const start = Date.now()
 
       window.performance.now = function () {
         return Date.now() - start
