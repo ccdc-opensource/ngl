@@ -529,7 +529,6 @@
 
 		}
 
-    console.log('buffergeometry',buffergeometry);
 		return buffergeometry;
 
 	}
