@@ -217,10 +217,8 @@ class Superposition {
         })
 
         //update transformation matrices for each assembly
-
-        const invertTrasform = new Matrix4()
-        invertTrasform.getInverse(transform)
-
+        const invertTrasform = new Matrix4().copy(transform).invert();
+   
         const biomolDict = atoms.biomolDict
 
         for (let key in biomolDict) {
