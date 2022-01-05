@@ -5,9 +5,9 @@ import Streamer from './streamer'
  */
 class StringStreamer extends Streamer {
   get type () { return 'string' }
- 
+
   get __srcName () { return 'str' }
- 
+
   // _chunk (start, end) {
   //   return this.data.substr(start, end)
   // }

@@ -235,7 +235,7 @@ class DistanceRepresentation extends MeasurementRepresentation {
           radialSegments: this.radialSegments,
           disableImpostor: this.disableImpostor,
           dullInterior: true
-        }) 
+        })
       ) as CylinderGeometryBuffer
     } else {
       this.distanceBuffer = new WideLineBuffer(

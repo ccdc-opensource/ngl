@@ -50,7 +50,7 @@ export interface AxesRepresentationParameters extends StructureRepresentationPar
  * } );
  */
 class AxesRepresentation extends StructureRepresentation {
-  
+
   protected showAxes: boolean
   protected showBox: boolean
   protected sphereBuffer: SphereBuffer

@@ -168,22 +168,22 @@ class MmtfParser extends StructureParser {
       {
         const groupAtomCount = groupData.atomNameList.length
         const groupFormalChargeList = groupData.formalChargeList
-  
+
         const groupBondAtomList = groupData.bondAtomList
         const groupBondOrderList = groupData.bondOrderList
-  
+
         for (j = 0, jl = groupBondOrderList.length; j < jl; ++j) {
           bAtomIndex1[ bondOffset ] = atomOffset + groupBondAtomList[ j * 2 ]
           bAtomIndex2[ bondOffset ] = atomOffset + groupBondAtomList[ j * 2 + 1 ]
           bBondOrder[ bondOffset ] = groupBondOrderList[ j ]
           bondOffset += 1
         }
-  
+
         //
-  
+
         gAtomOffset[ i ] = atomOffset
         gAtomCount[ i ] = groupAtomCount
-  
+
         for (j = 0; j < groupAtomCount; ++j) {
           aGroupIndex[ atomOffset ] = i
           aFormalCharge[ atomOffset ] = groupFormalChargeList[ j ]

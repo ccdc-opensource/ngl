@@ -31,7 +31,7 @@ export interface HyperballRepresentationParameters extends BallAndStickRepresent
 class HyperballRepresentation extends LicoriceRepresentation {
   protected shrink: number
   protected __center: Float32Array
-  
+
   constructor (structure: Structure, viewer: Viewer, params: Partial<HyperballRepresentationParameters>) {
     super(structure, viewer, params)
 

@@ -261,8 +261,8 @@ class StructureComponent extends Component {
   }
 
   /**
-   * Overrides {@link Component.updateRepresentationMatrices} 
-   * to also update matrix for measureRepresentations 
+   * Overrides {@link Component.updateRepresentationMatrices}
+   * to also update matrix for measureRepresentations
    */
   updateRepresentationMatrices () {
     super.updateRepresentationMatrices()

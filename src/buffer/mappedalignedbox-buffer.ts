@@ -16,8 +16,8 @@ import MappedBuffer from './mapped-buffer'
 //    * / |   *  *
 //    1/**|******4
 //    /   |   * *
-//   /    |   **  
-//  +Z    |   5 
+//   /    |   **
+//  +Z    |   5
 const mapping = new Float32Array([
   -1.0, 1.0, -1.0,
   -1.0, -1.0, -1.0,

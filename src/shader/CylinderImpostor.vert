@@ -34,7 +34,7 @@ varying vec3 axis; // Cylinder axis
 varying vec4 base_radius; // base position and cylinder radius packed into a vec4
 varying vec4 end_b; // End position and "b" flag which indicates whether pos1/2 is flipped
 varying vec3 U; // axis, U, V form orthogonal basis aligned to the cylinder
-varying vec3 V; 
+varying vec3 V;
 varying vec4 w; // The position of the vertex after applying the mapping
 
 #ifdef PICKING
@@ -65,7 +65,7 @@ void main(){
     base_radius.w = radius * matrixScale( modelViewMatrix );
 
     // position is supplied by mapped-buffer.ts as midpoint of position1 and 2
-    vec3 center = position; 
+    vec3 center = position;
 
     vec3 dir = normalize( position2 - position1 );
     float ext = length( position2 - position1 ) / 2.0; // Half-length of cylinder
@@ -86,7 +86,7 @@ void main(){
 
     // ldir is the cylinder's direction (center->end) in model coords
     // It will always point towards the camera
-    vec3 ldir; 
+    vec3 ldir;
 
     float b = dot( cam_dir, dir );
     end_b.w = b;

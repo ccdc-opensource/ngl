@@ -159,7 +159,7 @@ class RocketRepresentation extends StructureRepresentation {
     }
   }
 
-  
+
   updateData (what: any, data: {bufferList: CylinderBuffer[], helixbundleList: Helixbundle[], axisList: Axis[], axisData: AxisData}) {
     what = what || {}
 

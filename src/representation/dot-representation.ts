@@ -324,7 +324,7 @@ class DotRepresentation extends Representation {
   }
 
   setParameters (params: Partial<DotRepresentationParameters>, what: DotDataFields = {}, rebuild: boolean) {
-    
+
     if (params && params.thresholdType !== undefined &&
         this.volume instanceof Volume
     ) {

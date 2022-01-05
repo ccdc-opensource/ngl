@@ -43,7 +43,7 @@ class CartoonRepresentation extends StructureRepresentation {
   protected capped: boolean
   protected smoothSheet: boolean
   protected subdiv: number
-  
+
   /**
    * Create Cartoon representation object
    * @param {Structure} structure - the structure to be represented

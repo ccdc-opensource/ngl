@@ -18,7 +18,7 @@ import Polymer from '../proxy/polymer';
  */
 class RopeRepresentation extends CartoonRepresentation {
   protected smooth: number
-  
+
   constructor (structure: Structure, viewer: Viewer, params: Partial<CartoonRepresentationParameters>&{smooth: number}) {
     super(structure, viewer, params)
 

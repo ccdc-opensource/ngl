@@ -17,14 +17,14 @@ import { ColormakerParameters } from '../color/colormaker';
 import { NumberArray } from '../types';
 
 export class Interpolator {
-  
+
   m: number
   tension: number
   dt: number
   delta: number
   vec1: Vector3
   vec2: Vector3
-  vDir: Vector3 
+  vDir: Vector3
   vTan: Vector3
   vNorm: Vector3
   vBin: Vector3
@@ -43,7 +43,7 @@ export class Interpolator {
     this.vTan = new Vector3()
     this.vNorm = new Vector3()
     this.vBin = new Vector3()
-  
+
     this.m2 = Math.ceil(this.m / 2)
   }
 
@@ -528,7 +528,7 @@ class Spline {
       'color': col
     }
   }
-  
+
   getSubdividedPicking () {
     var m = this.subdiv
     var polymer = this.polymer
@@ -561,7 +561,7 @@ class Spline {
       'position': pos
     }
   }
-  
+
   getSubdividedOrientation () {
     const tan = this.getTangent()
     const normals = this.getNormals(tan)

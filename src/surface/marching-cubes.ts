@@ -401,7 +401,7 @@ function MarchingCubes (this: MarchingCubes, field: number[], nx: number, ny: nu
       normalFactor = isolevel > 0 ? -1.0 : 1.0
       if (!normalCache) {
         normalCache = new Float32Array(n * 3)
-      }  
+      }
     }
 
     var vIndexLength = n * 3
