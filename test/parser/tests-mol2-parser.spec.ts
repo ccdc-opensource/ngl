@@ -5,6 +5,7 @@ import Mol2Parser from '../../src/parser/mol2-parser'
 
 import { join } from 'path'
 import * as fs from 'fs'
+import Structure from '../../src/structure/structure'
 
 describe('parser/mol2-parser', function () {
   describe('parsing', function () {
@@ -16,6 +17,18 @@ describe('parser/mol2-parser', function () {
       return mol2Parser.parse().then(function (structure) {
         expect(structure.atomCount).toBe(26)
         expect(structure.bondCount).toBe(26)
+      })
+    })
+    it('basic_unitcell', function () {
+      var file = join(__dirname, '/../data/ABETOS.mol2')
+      var str = fs.readFileSync(file, 'utf-8')
+      var streamer = new StringStreamer(str)
+      var mol2Parser = new Mol2Parser(streamer, {})
+      return mol2Parser.parse().then(function (structure: Structure) {
+        expect(structure.atomCount).toBe(71)
+        expect(structure.bondCount).toBe(71)
+        expect(structure.unitcell).toBeDefined()
+        expect(structure.unitcell?.spacegroup).toBe("C 1 2/c 1")
       })
     })
   })
