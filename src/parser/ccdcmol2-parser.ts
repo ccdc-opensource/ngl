@@ -220,22 +220,28 @@ class CCDCMol2Parser extends StructureParser {
           unitcellDict.alpha = alpha;
           unitcellDict.beta = beta;
           unitcellDict.gamma = gamma;
+
+          // TODO: I've ignored the space group and setting for now as this are manually generated from the 
+          // space group operators
         }
       }
     }
 
+    // Process the MOL2 file
     const lines = jsonData.mol2.split('\n');
     _parseChunkOfLines(0, lines.length, lines)
 
+    // Do we have a UC dictionary, if so, create the unit cell
     if (unitcellDict.a !== undefined) { 
       s.unitcell = new Unitcell(unitcellDict as UnitcellParams) 
     } else { 
       s.unitcell = undefined 
     } 
 
+    // x,y,z;-x,-y,1/2+z;1/2-x,1/2+y,1/2+z;1/2+x,1/2-y,z
+    // split operators into a 2D array in preparation for generating the unit cell assembly
     const operators:string[][] = [];
     const spacegroupOperators = (spacegroupOperators: string) =>{
-            // x,y,z;-x,-y,1/2+z;1/2-x,1/2+y,1/2+z;1/2+x,1/2-y,z
       spacegroupOperators.split(";").forEach(op => {
         const semop:string[] = [];
         op.split(",").forEach(o => {
@@ -244,6 +250,7 @@ class CCDCMol2Parser extends StructureParser {
         operators.push(semop);
       });
 
+      // build the unit cell assembly.
       this._buildUnitcellAssembly(s, operators);
     }
 
