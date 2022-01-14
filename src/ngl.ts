@@ -133,6 +133,7 @@ import './parser/cif-parser'
 import './parser/gro-parser'
 import './parser/mmtf-parser'
 import './parser/mol2-parser'
+
 import './parser/pdb-parser'
 import './parser/pdbqt-parser'
 import './parser/pqr-parser'
@@ -166,6 +167,9 @@ import './parser/text-parser'
 import './parser/xml-parser'
 
 import './parser/validation-parser'
+
+//Custom parsers
+import './parser/ccdcmol2-parser'
 
 //
 
