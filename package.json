@@ -1,5 +1,5 @@
 {
-  "name": "ngl",
+  "name": "@ccdc-opensource/ngl",
   "version": "2.0.0-dev.39",
   "description": "Scalable molecular graphics for the web",
   "main": "dist/ngl.umd.js",
