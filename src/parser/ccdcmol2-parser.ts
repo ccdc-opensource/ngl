@@ -5,6 +5,8 @@ import Assembly from '../symmetry/assembly'
 import Structure from '../structure/structure'
 import Unitcell, { UnitcellParams } from '../symmetry/unitcell'
 import StringStreamer from "../streamer/string-streamer";
+import Streamer from "../streamer/streamer";
+import { StructureParserParameters } from "./structure-parser";
 
 const reInteger = /^[1-9]$/
 const reWhitespace = /\s+/
@@ -27,24 +29,28 @@ const unitcellDict: Partial<{
   spacegroup: string
 }> = {}
   
-class CCDCMol2Parser extends Mol2Parser {
-    private _spacegroupOperators: string;
-    private _cellDimensions: string;
-    constructor(accessStructuresMolData: IAccessStructuresMolData) {
-        super(new StringStreamer(accessStructuresMolData.mol2));
-        this._spacegroupOperators = accessStructuresMolData.spacegroupOperators;
-        this._cellDimensions= accessStructuresMolData.cellDimensions;        
+class CCDCMol2Parser {
+  streamer: Streamer
+  name: string
+  path: string
+  [k: string]: any
+
+    get type () { return 'ccdcmol2' }
+    constructor(streamer: Streamer, params?: Partial<StructureParserParameters>) {      
+        this.streamer = streamer;
+        this.params = params;     
     }
 
-
-    _afterParse(): void {
-        if (Debug) Log.time('CCDCMol2Parser._afterParse ' + this.name)
-
-        const s = this.structure
-
-        buildUnitCell(s, this._cellDimensions);
-        spacegroupOperators(s, this._spacegroupOperators);
-        if (Debug) Log.timeEnd('CCDCMol2Parser._afterParse ' + this.name)
+    parse () {
+      return this.streamer.read().then(() => {
+        const data = JSON.parse(this.streamer.asText()) as IAccessStructuresMolData;
+        const mol2Parser = new Mol2Parser(new StringStreamer(data.mol2), this.params);
+        return mol2Parser.parse().then((structure)=> {
+          buildUnitCell(structure, data.cellDimensions);
+          spacegroupOperators(structure, data.spacegroupOperators);
+          return structure
+        });
+      })
     }
 }
 
@@ -266,6 +272,3 @@ function buildUnitcellAssembly(structure: Structure, operators: string[][]): voi
 
   if (Debug) Log.timeEnd('buildUnitcellAssembly')
 }
-
-
-
