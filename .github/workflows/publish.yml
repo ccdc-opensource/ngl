@@ -1,9 +1,7 @@
 name: Publish
 
-on:
+on: push
 
-    pull_request:
-        types: [closed]
 
 jobs:
   publish-npm:
