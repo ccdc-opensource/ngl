@@ -26,10 +26,10 @@ console.log(`Package metadata read. Version: ${package.version}`);
 const currentLatest = getTagVersionFromNpm("latest") || "0.0.0";
 console.log(`Artifactor version: ${currentLatest}`);
 // increment the next version number
-const nextVersion = semver.inc(currentLatest, "prerelease","dev");
+const nextVersion = semver.inc(currentLatest, "prerelease", "ccdc");
 console.log(`NextVersion version: ${nextVersion}`);
 
-const nextPackageVersion = semver.inc(package.version, "prerelease", "dev");
+const nextPackageVersion = semver.inc(package.version, "prerelease", "ccdc");
 // check if the package.json version is greater than the next version
 const publishTag = semver.gt(nextPackageVersion, nextVersion, { includePrerelease: true })
     ? nextPackageVersion
