@@ -83,7 +83,11 @@ function buildUnitCell(s: Structure, cellDimensions: string): void {
     unitcellDict.alpha = alpha;
     unitcellDict.beta = beta;
     unitcellDict.gamma = gamma;
+  
+    // Add name to unitcell
+    unitcellDict.spacegroup = cellDimensions;
   }
+
 
   if (unitcellDict.a !== undefined) { 
     s.unitcell = new Unitcell(unitcellDict as UnitcellParams) 
