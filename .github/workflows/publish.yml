@@ -15,9 +15,12 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
 
-      - run: npm ci
+      - run: rm -r -f ./dist
+      - run: npm ci      
+      - run: npm run build      
       - run: node .github/workflows/set-version-number.js	  
-      
+      - run: cp -a ./build/js/. ./dist/
+      - run: rm ./dist/*.dev.*
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
