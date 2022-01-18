@@ -1,9 +1,9 @@
 import Mol2Parser from "./mol2-parser";
 import { Debug, Log, ParserRegistry } from '../globals'
 import { Vector3, Matrix4 } from 'three'
- import Assembly from '../symmetry/assembly'
+import Assembly from '../symmetry/assembly'
 import Structure from '../structure/structure'
- import Unitcell, { UnitcellParams } from '../symmetry/unitcell'
+import Unitcell, { UnitcellParams } from '../symmetry/unitcell'
 import StringStreamer from "../streamer/string-streamer";
 import Streamer from "../streamer/streamer";
 import { StructureParserParameters } from "./structure-parser";
